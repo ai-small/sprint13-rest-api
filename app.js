@@ -22,6 +22,7 @@ app.use((req, res, next) => {
   req.user = { _id: '5f2fe87a9db70f0f6fa0cbef' };
   next();
 });
+
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
 app.use(notFound);

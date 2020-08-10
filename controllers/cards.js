@@ -2,7 +2,7 @@ const Card = require('../models/card');
 
 const getCards = (req, res) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.status(200).send({ data: cards }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
 
@@ -11,13 +11,13 @@ const createCard = (req, res) => {
   const owner = req.user._id;
 
   Card.create({ name, link, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.status(200).send({ data: card }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
 
 const deleteCard = (req, res) => {
   Card.findByIdAndRemove(req.params.cardId)
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.status(200).send({ data: card }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
 
