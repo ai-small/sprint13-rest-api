@@ -4,7 +4,7 @@ const User = require('../models/user');
 const getUsers = (req, res) => {
   User.find({})
     .then((users) => res.status(200).send({ data: users }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: `На сервере произошла ошибка: ${err.message}` }));
 };
 
 const getUserById = (req, res) => {
@@ -15,7 +15,7 @@ const getUserById = (req, res) => {
           res.status(200).send({ data: user });
         } else res.status(404).send({ message: 'User not found' });
       })
-      .catch((err) => res.status(500).send({ message: err.message }));
+      .catch((err) => res.status(500).send({ message: `На сервере произошла ошибка: ${err.message}` }));
   } else res.status(404).send({ message: 'User not found' });
 };
 
@@ -24,7 +24,7 @@ const createUser = (req, res) => {
 
   User.create({ name, about, avatar })
     .then((user) => res.status(200).send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: `На сервере произошла ошибка: ${err.message}` }));
 };
 
 const updateUser = (req, res) => {
@@ -35,7 +35,6 @@ const updateUser = (req, res) => {
     {
       new: true,
       runValidators: true,
-      upsert: true,
     },
   )
     .then((user) => {
@@ -43,7 +42,7 @@ const updateUser = (req, res) => {
         res.status(200).send({ data: user });
       } else res.status(404).send({ message: 'User not found' });
     })
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: `На сервере произошла ошибка: ${err.message}` }));
 };
 
 const updateAvatar = (req, res) => {
@@ -54,7 +53,6 @@ const updateAvatar = (req, res) => {
     {
       new: true,
       runValidators: true,
-      upsert: true,
     },
   )
     .then((user) => {
@@ -62,7 +60,7 @@ const updateAvatar = (req, res) => {
         res.status(200).send({ data: user });
       } else res.status(404).send({ message: 'User not found' });
     })
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: `На сервере произошла ошибка: ${err.message}` }));
 };
 
 module.exports = {

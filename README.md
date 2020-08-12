@@ -18,4 +18,8 @@
 - `POST /users` — создаёт пользователя с переданными в теле запроса name, about и avatar;
 - `GET /cards` — возвращает все карточки;
 - `POST /cards` — создаёт карточку;
-- `DELETE /cards/:cardId` — удаляет карточку по идентификатору.
+- `DELETE /cards/:cardId` — удаляет карточку по идентификатору;
+- `PATCH /users/me` — обновляет профиль;
+- `PATCH /users/me/avatar` — обновляет аватар;
+- `PUT /cards/:cardId/likes` — поставить лайк карточке;
+- `DELETE /cards/:cardId/likes` — убрать лайк с карточки.
